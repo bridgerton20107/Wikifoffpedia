@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Wikifoffpedia</title><style id="css">
+:root{--bg:#f6f6f6;--page:#fff;--text:#202122;--muted:#54595d;--link:#0645ad;--red:#ba0000;--border:#a2a9b1;--soft:#f8f9fa;--accent:#36c;--accent-text:#fff;--warn:#fef6e7;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101418;--page:#1a1d21;--text:#eaecf0;--muted:#a2a9b1;--link:#8ab4f8;--red:#ff7b72;--border:#54595d;--soft:#22262b;--accent:#4a7fe0;--accent-text:#fff;--warn:#2b2617}}
+:root[data-theme="dark"]{--bg:#101418;--page:#1a1d21;--text:#eaecf0;--muted:#a2a9b1;--link:#8ab4f8;--red:#ff7b72;--border:#54595d;--soft:#22262b;--accent:#4a7fe0;--accent-text:#fff;--warn:#2b2617}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*:before,*:after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6}
+a{color:var(--link);text-decoration:none}a:hover{text-decoration:underline}a.new{color:var(--red)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--page);border-bottom:1px solid var(--border)}
+.burger{background:none;border:0;font-size:22px;color:var(--text);cursor:pointer;padding:2px 8px;display:none}
+.brand{display:flex;align-items:center;gap:10px;color:var(--text);min-width:0}.brand:hover{text-decoration:none}
+.emblem{width:38px;height:38px;border-radius:50%;border:2px solid var(--text);display:flex;align-items:center;justify-content:center;font:700 22px Georgia,serif;flex:none}
+.bt{display:flex;flex-direction:column;line-height:1.15;min-width:0}.bt b{font:400 21px Georgia,"Linux Libertine",serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.bt small{color:var(--muted);font-size:11px}
+.search{margin-left:auto;display:flex;gap:4px;flex:0 1 340px;min-width:0}
+.search input{flex:1;min-width:0;padding:6px 10px;border:1px solid var(--border);border-radius:2px;background:var(--soft);color:var(--text);font:inherit}
+button,.btn{font:inherit;cursor:pointer;border:1px solid var(--border);background:var(--soft);color:var(--text);padding:6px 12px;border-radius:2px}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-text);font-weight:600}
+button.danger{color:var(--red)}
+.layout{display:grid;grid-template-columns:190px minmax(0,1fr);max-width:1200px;margin:0 auto}
+.side{padding:16px 12px;font-size:13px}.side h4{margin:16px 0 6px;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;font-weight:600}
+.side a{display:block;padding:3px 0}
+.content{background:var(--page);border:1px solid var(--border);border-top:0;padding:8px 24px 32px;min-height:70vh;min-width:0}
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--border);margin:0 -24px;padding:0 24px}
+.tabs a{padding:8px 14px;font-size:13px;border:1px solid transparent;border-bottom:0;color:var(--link)}.tabs a.on{background:var(--page);border-color:var(--border);margin-bottom:-1px;color:var(--text)}
+h1.fh{font:400 1.9rem Georgia,"Linux Libertine",serif;margin:.6em 0 .2em;border-bottom:1px solid var(--border);padding-bottom:.1em;line-height:1.25;overflow-wrap:anywhere}
+.tag{color:var(--muted);font-size:13px;margin:.2em 0 1em}
+.body h2{font:400 1.5rem Georgia,serif;border-bottom:1px solid var(--border);margin:1.2em 0 .5em;padding-bottom:.1em}
+.body h3{font-size:1.15rem;margin:1em 0 .4em}.body h4{font-size:1rem;margin:1em 0 .3em}
+.body p{margin:.6em 0}.body{overflow-wrap:anywhere}
+sup.cn{color:var(--link);font-size:.75em;white-space:nowrap}
+.infobox{float:right;width:260px;margin:.4em 0 1em 1.4em;border:1px solid var(--border);background:var(--soft);font-size:13px;border-collapse:collapse;line-height:1.4}
+.infobox caption{font-weight:700;font-size:15px;padding:8px;background:var(--accent);color:var(--accent-text);caption-side:top}
+.infobox th{text-align:left;vertical-align:top;padding:4px 8px;width:38%}.infobox td{padding:4px 8px;vertical-align:top}
+.infobox th.ibh{text-align:center;width:auto;background:var(--border);color:var(--text)}
+.ibimg{text-align:center;padding:8px!important}.ibimg img{max-width:100%;height:auto;display:block;margin:0 auto}
+.toc{display:inline-block;min-width:200px;border:1px solid var(--border);background:var(--soft);padding:8px 14px;font-size:13px;margin:.6em 0}
+.toc b{display:block;text-align:center}.toc ol{margin:4px 0 0;padding-left:0;list-style:none}.toc li{margin:2px 0}
+.foot{margin-top:2em;padding-top:.6em;border-top:1px solid var(--border);color:var(--muted);font-size:12px}
+.results li{margin:0 0 .8em}.results small{color:var(--muted);display:block}
+.form label{display:block;margin:10px 0;font-weight:600;font-size:13px}
+.form input[type=text],.form textarea{display:block;width:100%;margin-top:4px;padding:8px;border:1px solid var(--border);border-radius:2px;background:var(--soft);color:var(--text);font:14px/1.5 ui-monospace,Menlo,Consolas,monospace}
+.form input[type=text]{font-family:inherit;font-size:15px}
+fieldset{border:1px solid var(--border);margin:14px 0;padding:6px 12px 12px}legend{font-size:12px;color:var(--muted);padding:0 6px}
+details{margin:8px 0;font-size:13px;background:var(--soft);padding:8px 12px;border:1px solid var(--border)}details code{background:var(--page);padding:0 4px}
+.btns{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px}
+.imgrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.imgrow img{max-height:80px;border:1px solid var(--border)}
+.notice{background:var(--warn);border:1px solid var(--border);padding:8px 12px;margin:10px 0}
+#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:#202122;color:#fff;padding:10px 16px;border-radius:6px;z-index:50;font-size:14px;max-width:90vw;display:none}
+.sitefoot{max-width:1200px;margin:0 auto;padding:14px 16px 30px;color:var(--muted);font-size:12px}
+@media (max-width:800px){
+.burger{display:block}.layout{grid-template-columns:minmax(0,1fr)}
+.side{display:none;background:var(--page);border-bottom:1px solid var(--border)}.side.open{display:block}
+.content{padding:8px 16px 28px;border-left:0;border-right:0}.tabs{margin:0 -16px;padding:0 16px}
+.infobox{float:none;width:100%;margin:.6em 0 1em}.bt small{display:none}.search{flex-basis:auto}.search button{display:none}
+}
+</style></head><body><div id="app"></div><script type="application/json" id="wiki-data">{"site":{"name":"Wikifoffpedia","tagline":"The free encyclopedia that only one of us can edit"},"articles":{"Main_Page":{"title":"Main Page","edited":"2026-09-28T12:00:00.000Z","image":null,"infobox":"","body":"'''Welcome to Wikifoffpedia''', the encyclopedia of everything that matters to our friend group, and absolutely nothing that doesn't.\n\n== Featured article ==\n[[Reginald Fluffington]] is a distinguished domestic cat and the reigning ruler of the couch.{{cn}} Read the [[Reginald Fluffington|full article]].\n\n== Explore ==\n* Browse [[Special:All|all articles]]\n* See [[Special:Recent|recent changes]]\n* Try a [[Special:Random|random article]]\n\n== About ==\nEverything on this site is completely factual, peer reviewed by nobody, and definitely not made up."},"Reginald_Fluffington":{"title":"Reginald Fluffington","edited":"2026-09-28T12:00:00.000Z","image":null,"infobox":"Born: Sometime in 2019\nOccupation: Professional napper\nKnown for: Knocking things off tables\nHome: The good couch\nWeight: Yes","body":"'''Reginald Fluffington III''' (born 2019) is a domestic cat best known for his tireless work in the fields of napping and ignoring instructions.{{cn}}\n\n== Early life ==\nReginald was found under a porch and immediately declared himself ''the boss of the house''. Historians agree this was not disputed.\n\n== Career ==\nHis major accomplishments include:\n* Knocking a glass of water off a table (2020)\n* Knocking a second glass of water off a table (2020)\n* Sitting in a box that was clearly too small (ongoing)\n\n== Legacy ==\nReginald is widely regarded as the greatest cat of his generation, mostly by Reginald.\n\n== See also ==\n* [[Main Page]]\n* [[The Great Couch Incident]]"},"International_perfect_girlfriend_day":{"title":"International perfect girlfriend day","body":"International perfect girlfriend day Is a holiday celebrated on (). It is a day for you to Celebrate the Very perfect person you life and showing them how much you love and appreciate them. It’s a day for you to express how much your perfect girlfriend means to you and so appreciation for all that she has done for you. It’s a day allocated for you to convey the impact that your perfect person has had on your life. it’s a way of showing them how they’ve changed you for the better and how they’ve made you a better and happier person. It’s a day for you to show your perfect girlfriend how special she is and show her how lucky you feel to have her in ur life.","infobox":"","image":null,"edited":"2026-09-28T20:32:48.846Z"}}}</script><script id="code">
+let state=JSON.parse(document.getElementById('wiki-data').textContent);
+const $app=document.getElementById('app');
+let canEdit=false;let pendingImage=null;let confirmDel=false;
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const unesc=s=>s.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&amp;/g,'&');
+const enc=s=>encodeURIComponent(s).replace(/'/g,'%27');
+const normTitle=t=>{t=String(t).trim().replace(/\s+/g,' ');return t.charAt(0).toUpperCase()+t.slice(1)};
+const keyOf=t=>normTitle(t).replace(/ /g,'_');
+const has=k=>Object.prototype.hasOwnProperty.call(state.articles,k);
+const href=k=>'#/wiki/'+enc(k);
+const isEditor=()=>{let f=false;try{f=sessionStorage.getItem('wikiEd')==='1'}catch(e){}return canEdit||f};
+async function cap(n){return null}
+function toast(m,ms){let t=document.getElementById('toast');if(!t){t=document.createElement('div');t.id='toast';document.body.appendChild(t)}t.textContent=m;t.style.display='block';clearTimeout(toast.t);if(ms!==0)toast.t=setTimeout(()=>{t.style.display='none'},ms||3500)}
+
+function inline(s){
+  s=s.replace(/'''(.+?)'''/g,'<b>$1</b>').replace(/''(.+?)''/g,'<i>$1</i>');
+  s=s.replace(/\{\{cn\}\}/gi,'<sup class="cn">[citation needed]</sup>');
+  s=s.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g,(m,t,l)=>{
+    const raw=unesc(t).trim();
+    if(/^special:/i.test(raw)){const w=raw.slice(8).toLowerCase();const map={all:'#/all',recent:'#/recent',random:'#/random'};return '<a href="'+(map[w]||'#/')+'">'+(l||t)+'</a>'}
+    const k=keyOf(raw);return '<a href="'+href(k)+'" class="'+(has(k)?'':'new')+'">'+(l||t)+'</a>';
+  });
+  s=s.replace(/\[(https?:\/\/[^\s\]]+)\s+([^\]]+)\]/g,'<a href="$1" target="_blank" rel="noopener noreferrer">$2</a>');
+  return s;
+}
+function renderBody(body){
+  const lines=String(body).replace(/\r/g,'').split('\n');let html='',heads=[],para=[],list=null,m;
+  const fp=()=>{if(para.length){html+='<p>'+inline(esc(para.join(' ')))+'</p>';para=[]}};
+  const fl=()=>{if(list){html+='</'+list+'>';list=null}};
+  for(const raw of lines){
+    const line=raw.trimEnd();
+    if(!line.trim()){fp();fl();continue}
+    if((m=line.match(/^(={2,4})\s*(.+?)\s*\1\s*$/))){fp();fl();const lv=m[1].length,id='s'+heads.length;heads.push({lv,id,text:m[2]});html+='<h'+lv+' id="'+id+'">'+inline(esc(m[2]))+'</h'+lv+'>';continue}
+    if((m=line.match(/^([*#])\s*(.*)$/))){fp();const t=m[1]==='*'?'ul':'ol';if(list!==t){fl();html+='<'+t+'>';list=t}html+='<li>'+inline(esc(m[2]))+'</li>';continue}
+    fl();para.push(line.trim());
+  }
+  fp();fl();return{html,heads};
+}
+function tocHtml(heads){
+  if(heads.length<3)return '';
+  let c=[0,0,0],h='<div class="toc"><b>Contents</b><ol>';
+  for(const x of heads){const l=x.lv-2;c[l]++;for(let i=l+1;i<3;i++)c[i]=0;const num=c.slice(0,l+1).join('.');
+    h+='<li style="padding-left:'+(l*14)+'px"><a href="#/" data-jump="'+x.id+'">'+num+' '+inline(esc(x.text))+'</a></li>'}
+  return h+'</ol></div>';
+}
+function infobox(a){
+  const info=(a.infobox||'').trim();
+  if(!a.image&&!info)return '';
+  let h='<table class="infobox"><caption>'+esc(a.title)+'</caption>';
+  if(a.image&&/^data:image\//.test(a.image))h+='<tr><td colspan="2" class="ibimg"><img alt="" src="'+a.image+'"></td></tr>';
+  for(const l of info.split('\n')){
+    if(!l.trim())continue;const i=l.indexOf(':');
+    if(i<0)h+='<tr><th colspan="2" class="ibh">'+inline(esc(l.trim()))+'</th></tr>';
+    else h+='<tr><th>'+inline(esc(l.slice(0,i).trim()))+'</th><td>'+inline(esc(l.slice(i+1).trim()))+'</td></tr>';
+  }
+  return h+'</table>';
+}
+function tabs(key,active){
+  let t='<div class="tabs"><a class="'+(active==='read'?'on':'')+'" href="'+href(key)+'">Article</a>';
+  if(isEditor())t+='<a class="'+(active==='edit'?'on':'')+'" href="#/edit/'+enc(key)+'">Edit</a>';
+  return t+'</div>';
+}
+const fmtDate=d=>{try{return new Date(d).toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'})}catch(e){return ''}};
+
+function viewArticle(key){
+  const a=state.articles[key];
+  if(!a){
+    const t=key.replace(/_/g,' ');
+    return{title:t,html:tabs(key,'read')+'<h1 class="fh">'+esc(t)+'</h1><p>'+esc(state.site.name)+' does not have an article with this exact title yet.</p>'+(isEditor()?'<p><a href="#/edit/'+enc(key)+'"><b>Create this article</b></a></p>':'<p>Try searching for a similar title, or ask the wiki owner to write it.</p>')};
+  }
+  const r=renderBody(a.body);
+  const main=key==='Main_Page';
+  return{title:a.title,html:tabs(key,'read')+'<h1 class="fh">'+esc(a.title)+'</h1><div class="tag">From '+esc(state.site.name)+', '+esc(state.site.tagline.toLowerCase().startsWith('the ')?state.site.tagline:'the free encyclopedia')+'</div>'+infobox(a)+'<div class="body">'+(main?'':tocHtml(r.heads))+r.html+'</div><div style="clear:both"></div>'+(main?'':'<div class="foot">This page was last edited on '+fmtDate(a.edited)+'. Content is not guaranteed to be true. At all.</div>')};
+}
+function viewAll(){
+  const ks=Object.keys(state.articles).sort((a,b)=>state.articles[a].title.localeCompare(state.articles[b].title));
+  return{title:'All articles',html:'<h1 class="fh">All articles</h1><p>'+ks.length+' article'+(ks.length===1?'':'s')+'.</p><ul>'+ks.map(k=>'<li><a href="'+href(k)+'">'+esc(state.articles[k].title)+'</a></li>').join('')+'</ul>'};
+}
+function viewRecent(){
+  const ks=Object.keys(state.articles).sort((a,b)=>String(state.articles[b].edited).localeCompare(String(state.articles[a].edited)));
+  return{title:'Recent changes',html:'<h1 class="fh">Recent changes</h1><ul>'+ks.map(k=>'<li>'+esc(fmtDate(state.articles[k].edited))+' &middot; <a href="'+href(k)+'">'+esc(state.articles[k].title)+'</a></li>').join('')+'</ul>'};
+}
+function viewSearch(q){
+  const ql=q.toLowerCase(),res=[];
+  for(const k in state.articles){const a=state.articles[k];const tm=a.title.toLowerCase().includes(ql);
+    const clean=a.body.replace(/[=\[\]{}']|\|/g,'');const bi=clean.toLowerCase().indexOf(ql);
+    if(tm||bi>=0)res.push({k,a,score:(tm?2:0)+(bi>=0?1:0),snip:bi>=0?clean.slice(Math.max(0,bi-60),bi+140):clean.slice(0,140)})}
+  res.sort((x,y)=>y.score-x.score);
+  let h='<h1 class="fh">Search results</h1><p>Results for <b>'+esc(q)+'</b>: '+res.length+' found.</p>';
+  const ex=keyOf(q);
+  if(!has(ex))h+='<p>The page <a class="new" href="'+href(ex)+'">'+esc(normTitle(q))+'</a> does not exist'+(isEditor()?' &mdash; <a href="#/edit/'+enc(ex)+'">create it</a>':'')+'.</p>';
+  h+='<ul class="results" style="list-style:none;padding:0">'+res.map(r=>'<li><a href="'+href(r.k)+'"><b>'+esc(r.a.title)+'</b></a><small>'+esc(r.snip)+'&hellip;</small></li>').join('')+'</ul>';
+  return{title:'Search: '+q,html:h,q};
+}
+function viewSettings(){
+  if(!isEditor())return viewArticle('Main_Page');
+  return{title:'Site settings',html:'<h1 class="fh">Site settings</h1><div class="form"><label>Wiki name<input type="text" id="s-name" value="'+esc(state.site.name)+'"></label><label>Tagline<input type="text" id="s-tag" value="'+esc(state.site.tagline)+'"></label><div class="btns"><button class="primary" id="s-save">Save settings</button><a href="#/">Cancel</a></div></div>'};
+}
+function viewEdit(key){
+  if(!isEditor())return{title:'Editing disabled',html:'<h1 class="fh">Editing is turned off</h1><p>Only the wiki owner can edit. Use &ldquo;Editor log in&rdquo; at the bottom of the page if that is you.</p>'};
+  const existing=key&&state.articles[key];
+  const a=existing||{title:key?key.replace(/_/g,' '):'',body:'',infobox:'',image:null};
+  pendingImage=a.image||null;confirmDel=false;
+  const isNew=!existing;
+  return{title:(isNew?'Creating ':'Editing ')+(a.title||'article'),editKey:existing?key:null,html:(existing?tabs(key,'edit'):'')+'<h1 class="fh">'+(isNew?'Create a new article':'Editing '+esc(a.title))+'</h1><div class="form">'+
+  '<label>Title<input type="text" id="f-title" value="'+esc(a.title)+'"></label>'+
+  '<label>Article text<textarea id="f-body" rows="16">'+esc(a.body)+'</textarea></label>'+
+  '<details><summary>Formatting cheat sheet</summary><p><code>== Heading ==</code> &nbsp; <code>=== Subheading ===</code></p><p><code>\'\'\'bold\'\'\'</code> &nbsp; <code>\'\'italic\'\'</code></p><p><code>[[Other article]]</code> &nbsp; <code>[[Other article|shown text]]</code> (red if it does not exist yet)</p><p><code>* bullet</code> &nbsp; <code># numbered</code></p><p><code>[https://example.com link text]</code> &nbsp; <code>{{cn}}</code> = [citation needed]</p></details>'+
+  '<fieldset><legend>Infobox (optional)</legend><label>Rows, one per line as <code>Label: value</code> (a line with no colon becomes a header)<textarea id="f-info" rows="5">'+esc(a.infobox||'')+'</textarea></label><div class="imgrow"><img id="f-prev" alt="" style="'+(a.image?'':'display:none')+'" src="'+(a.image&&/^data:image\//.test(a.image)?a.image:'')+'"><input type="file" id="f-file" accept="image/*"><button type="button" id="f-imgclear">Remove image</button></div></fieldset>'+
+  '<fieldset><legend>Auto-draft (optional)</legend><input type="text" id="f-notes" placeholder="Facts, inside jokes, tone&hellip; e.g. Dave, always late, loves waffles"><div class="btns"><button type="button" id="f-ai">&#10024; Draft article text</button><span id="f-aist" class="tag"></span></div></fieldset>'+
+  '<div class="btns"><button class="primary" id="f-save">Save page</button><a href="'+(existing?href(key):'#/')+'">Cancel</a>'+(existing&&key!=='Main_Page'?'<button class="danger" id="f-del" style="margin-left:auto">Delete page</button>':'')+'</div></div>'};
+}
+
+function shell(page){
+  const ed=isEditor();
+  const nav='<h4>Navigation</h4><a href="#/">Main page</a><a href="#/all">All articles</a><a href="#/recent">Recent changes</a><a href="#/random">Random article</a>'+
+    (ed?'<h4>Editor tools</h4><a href="#/new">Create article</a><a href="#/settings">Site settings</a>':'');
+  return '<header class="top"><button class="burger" data-act="menu" aria-label="Menu">&#9776;</button><a class="brand" href="#/"><span class="emblem">'+esc(state.site.name.charAt(0).toUpperCase())+'</span><span class="bt"><b>'+esc(state.site.name)+'</b><small>'+esc(state.site.tagline)+'</small></span></a><form class="search" data-form="search"><input type="text" id="q" placeholder="Search '+esc(state.site.name)+'" value="'+esc(page.q||'')+'" autocomplete="off"><button type="submit">Go</button></form></header>'+
+  '<div class="layout"><nav class="side" id="side">'+nav+'</nav><main class="content">'+page.html+'</main></div>'+
+  '<div class="sitefoot">'+esc(state.site.name)+' &mdash; a private wiki for friends. '+'</div>';
+}
+
+function route(){
+  const h=location.hash.replace(/^#\/?/,'');const parts=h.split('/');const cmd=parts[0];let arg='';
+  try{arg=decodeURIComponent(parts.slice(1).join('/'))}catch(e){arg=parts.slice(1).join('/')}
+  let page;
+  if(!h)page=viewArticle('Main_Page');
+  else if(cmd==='wiki')page=viewArticle(keyOf(arg));
+  else if(cmd==='all')page=viewAll();
+  else if(cmd==='recent')page=viewRecent();
+  else if(cmd==='search')page=viewSearch(arg);
+  else if(cmd==='new')page=viewEdit(null);
+  else if(cmd==='edit')page=viewEdit(keyOf(arg));
+  else if(cmd==='settings')page=viewSettings();
+  else if(cmd==='random'){const ks=Object.keys(state.articles).filter(k=>k!=='Main_Page');if(!ks.length){location.replace('#/');return}location.replace(href(ks[Math.floor(Math.random()*ks.length)]));return}
+  else page=viewArticle('Main_Page');
+  document.title=page.title+' - '+state.site.name;
+  $app.innerHTML=shell(page);
+  window.scrollTo(0,0);
+  if(cmd==='edit'||cmd==='new')bindEdit(page.editKey);
+  if(cmd==='settings')bindSettings();
+}
+
+function buildHtml(){
+  const data=JSON.stringify(state).replace(/</g,'\\u003c');
+  const css=document.getElementById('css').textContent,code=document.getElementById('code').textContent;
+  const S='<'+'script',E='<'+'/script>';
+  return '<!DOCTYPE html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>'+esc(state.site.name)+'</title><style id="css">'+css+'</style></head><body><div id="app"></div>'+S+' type="application/json" id="wiki-data">'+data+E+S+' id="code">'+code+E+'</body></html>';
+}
+async function commit(snapshot,okMsg){
+  toast('Saving\u2026',0);
+  try{
+    const art=await cap('artifact');
+    if(!art)throw{code:'not_granted'};
+    await art.publish(buildHtml());
+    toast(okMsg||'Saved');return true;
+  }catch(e){
+    if(e&&e.code==='conflict')return false;
+    state=JSON.parse(snapshot);
+    const ro=e&&(e.code==='not_writer'||e.code==='not_granted'||e.code==='consent_required'||e.code==='not_declared');
+    toast(ro?'This copy is read-only. Only the wiki owner can save changes.':'Could not save: '+((e&&(e.message||e.code))||'unknown error'),6000);
+    return false;
+  }
+}
+
+function bindEdit(oldKey){
+  const $=id=>document.getElementById(id);
+  $('f-file').onchange=e=>{
+    const f=e.target.files[0];if(!f)return;
+    const fr=new FileReader();
+    fr.onload=()=>{const im=new Image();im.onload=()=>{
+      const max=480,sc=Math.min(1,max/Math.max(im.width,im.height));
+      const c=document.createElement('canvas');c.width=Math.round(im.width*sc);c.height=Math.round(im.height*sc);
+      c.getContext('2d').drawImage(im,0,0,c.width,c.height);
+      pendingImage=c.toDataURL('image/jpeg',0.8);$('f-prev').src=pendingImage;$('f-prev').style.display='block';
+    };im.onerror=()=>toast('Could not read that image');im.src=fr.result};
+    fr.readAsDataURL(f);
+  };
+  $('f-imgclear').onclick=()=>{pendingImage=null;$('f-prev').style.display='none';$('f-file').value=''};
+  $('f-ai').onclick=async()=>{
+    const title=normTitle($('f-title').value);if(!title){toast('Enter a title first');return}
+    const s=await cap('sample');if(!s){toast('AI drafting is not available in this view');return}
+    const st=$('f-aist');st.textContent='Writing\u2026';
+    const prompt='Write a humorous, fake-but-convincing encyclopedia article for a private wiki that a group of friends shares. Article title: "'+title+'". Notes from the author (use these as the facts to build on): '+($('f-notes').value.trim()||'none, invent something fun and harmless')+'.\n\nUse ONLY this markup: == Heading == for sections, \'\'\'bold\'\'\' (bold the title in the first sentence), \'\'italic\'\', [[Link to another article]], * for bullets, and {{cn}} for a joking [citation needed]. 150-350 words, dry encyclopedic tone. Keep it good-natured. Output only the article text with no preamble and no code fences.';
+    try{await s(prompt,{cache:false,onText:({text})=>{$('f-body').value=text}});st.textContent='Done. Edit as you like.'}
+    catch(e){st.textContent=(e&&e.code==='not_granted')?'Permission declined.':'Drafting failed. Try again.'}
+  };
+  const del=$('f-del');
+  if(del)del.onclick=async()=>{
+    if(!confirmDel){confirmDel=true;del.textContent='Really delete? Tap again';return}
+    const snap=JSON.stringify(state);delete state.articles[oldKey];
+    if(await commit(snap,'Deleted'))location.hash='#/';
+  };
+  $('f-save').onclick=async()=>{
+    const title=normTitle($('f-title').value);if(!title){toast('Please enter a title');return}
+    const k=keyOf(title);
+    if(k!==oldKey&&has(k)){toast('An article with that title already exists');return}
+    const snap=JSON.stringify(state);
+    if(oldKey&&k!==oldKey)delete state.articles[oldKey];
+    state.articles[k]={title,body:$('f-body').value,infobox:$('f-info').value,image:pendingImage,edited:new Date().toISOString()};
+    location.hash=href(k);
+    if(!(await commit(snap,'Saved')))route();
+  };
+}
+function bindSettings(){
+  document.getElementById('s-save').onclick=async()=>{
+    const n=document.getElementById('s-name').value.trim(),t=document.getElementById('s-tag').value.trim();
+    if(!n){toast('Name cannot be empty');return}
+    const snap=JSON.stringify(state);state.site={name:n,tagline:t||'The free encyclopedia'};
+    location.hash='#/';
+    if(!(await commit(snap,'Settings saved')))route();
+  };
+}
+
+document.addEventListener('click',e=>{
+  const j=e.target.closest('[data-jump]');
+  if(j){e.preventDefault();const el=document.getElementById(j.getAttribute('data-jump'));if(el)el.scrollIntoView({behavior:'smooth',block:'start'});return}
+  const a=e.target.closest('[data-act]');if(!a)return;
+  const act=a.getAttribute('data-act');
+  if(act==='menu'){document.getElementById('side').classList.toggle('open');return}
+  if(act==='login'||act==='logout'){e.preventDefault();try{sessionStorage.setItem('wikiEd',act==='login'?'1':'0')}catch(x){}if(act==='logout')canEdit=false;if(location.hash&&location.hash!=='#/'){location.hash='#/'}else{route()}}
+});
+document.addEventListener('submit',e=>{
+  if(e.target.getAttribute&&e.target.getAttribute('data-form')==='search'){
+    e.preventDefault();const q=document.getElementById('q').value.trim();if(!q)return;
+    const k=keyOf(q);location.hash=has(k)?href(k):'#/search/'+enc(q);
+  }
+});
+window.addEventListener('hashchange',route);
+route();
+(async()=>{
+  const u=await cap('user');
+  if(u&&((u.isOwner&&u.isOwner())||(u.canEdit&&u.canEdit()))){
+    canEdit=true;
+    const h=location.hash;if(!/^#\/(edit|new|settings)/.test(h))route();
+  }
+})();
+</script></body></html>
